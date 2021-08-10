@@ -22,8 +22,6 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
-
-
     public void createUser(SignUpRequest userIn) {
         if (userRepository.existsUserByEmailOrUsername(userIn.getEmail(), userIn.getUsername())) {
             throw new ApiRequestException("The user " + userIn.getUsername() + " already exist. Please check credentials");
@@ -68,7 +66,6 @@ public class UserService {
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found with username " + email));
 
     }
-
 
     public User getUserById(String id) {
         return userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("User not found"));

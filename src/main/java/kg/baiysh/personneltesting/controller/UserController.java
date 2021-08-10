@@ -32,7 +32,7 @@ public class UserController {
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<DTOEntity> getCurrentUser(Principal principal) {
         User user = userService.getCurrentUser(principal);
-        DTOEntity userDTO = new DtoUtils().convertToDto(user, new UserDTO());
+        DTOEntity userDTO = DtoUtils.convertToDto(user, new UserDTO());
 
         return new ResponseEntity<>(userDTO, HttpStatus.OK);
     }
@@ -41,7 +41,7 @@ public class UserController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<DTOEntity> getUserProfile(@PathVariable String userId) {
         User user = userService.getUserById(userId);
-        DTOEntity userDTO = new DtoUtils().convertToDto(user, new UserDTO());
+        DTOEntity userDTO = DtoUtils.convertToDto(user, new UserDTO());
 
         return new ResponseEntity<>(userDTO, HttpStatus.OK);
     }
@@ -50,7 +50,7 @@ public class UserController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<DTOEntity> getUserByEmail(@PathVariable String email) {
         User user = userService.getUserByEmail(email);
-        DTOEntity userDTO = new DtoUtils().convertToDto(user, new UserDTO());
+        DTOEntity userDTO = DtoUtils.convertToDto(user, new UserDTO());
 
         return new ResponseEntity<>(userDTO, HttpStatus.OK);
     }
@@ -63,7 +63,7 @@ public class UserController {
         if (!ObjectUtils.isEmpty(errors)) return errors;
         User user = userService.updateStatus(userDTO);
 
-        DTOEntity userUpdated = new DtoUtils().convertToDto(user, new UserDTO());
+        DTOEntity userUpdated = DtoUtils.convertToDto(user, new UserDTO());
         return new ResponseEntity<>(userUpdated, HttpStatus.OK);
     }
 
@@ -82,7 +82,7 @@ public class UserController {
             return new ResponseEntity<>(String.format("There is no %s role in the database", role), HttpStatus.BAD_REQUEST);
         }
 
-        DTOEntity userUpdated = new DtoUtils().convertToDto(user, new UserDTO());
+        DTOEntity userUpdated = DtoUtils.convertToDto(user, new UserDTO());
         return new ResponseEntity<>(userUpdated, HttpStatus.OK);
     }
 }

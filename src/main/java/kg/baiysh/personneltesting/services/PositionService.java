@@ -36,5 +36,4 @@ public class PositionService {
         positions.forEach(position -> dtoEntities.add(DtoUtils.convertToDto(position, new PositionDTO())));
         return dtoEntities;
     }
-
 }

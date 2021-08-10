@@ -38,4 +38,11 @@ public class PersonnelController {
         DTOEntity dtoEntity = personnelService.createPersonnel(personnelDTO, principal);
         return new ResponseEntity<>(dtoEntity, HttpStatus.OK);
     }
+
+    @PostMapping("/updateGroup")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<DTOEntity> updateGroup(@RequestBody PersonnelDTO personnelDTO) {
+        DTOEntity dtoEntity = personnelService.updateGroup(personnelDTO);
+        return new ResponseEntity<>(dtoEntity, HttpStatus.OK);
+    }
 }

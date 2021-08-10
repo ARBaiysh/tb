@@ -1,14 +1,13 @@
 package kg.baiysh.personneltesting.services;
 
 
-import kg.baiysh.personneltesting.entity.User;
-import kg.baiysh.personneltesting.payload.dto.PersonnelDTO;
-import kg.baiysh.personneltesting.payload.utils.DTOEntity;
-import kg.baiysh.personneltesting.payload.utils.DtoUtils;
 import kg.baiysh.personneltesting.entity.Personnel;
 import kg.baiysh.personneltesting.entity.Position;
+import kg.baiysh.personneltesting.entity.User;
 import kg.baiysh.personneltesting.entity.enums.ESafetyGroup;
 import kg.baiysh.personneltesting.exceptions.ApiRequestException;
+import kg.baiysh.personneltesting.payload.dto.PersonnelDTO;
+import kg.baiysh.personneltesting.payload.utils.DTOEntity;
 import kg.baiysh.personneltesting.repository.PersonnelRepository;
 import kg.baiysh.personneltesting.repository.PositionRepository;
 import kg.baiysh.personneltesting.repository.UserRepository;
@@ -17,7 +16,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +41,7 @@ public class PersonnelService {
         personnel.setPersonnelName(personnelDTO.getPersonnelName());
         personnel.setPersonnelNumber(personnelDTO.getPersonnelNumber());
         personnel.setPosition(position);
-        personnel.setElectricalSafetyGroup(ESafetyGroup.NON);
+        personnel.setElectricalSafetyGroup(ESafetyGroup.I);
         personnel.setUser(user);
 
         Personnel tempPersonnel = personnelRepository.save(personnel);
@@ -57,5 +55,11 @@ public class PersonnelService {
 
         personnelList.forEach(personnel -> dtoEntities.add(PersonnelDTO.convertToDto(personnel)));
         return dtoEntities;
+    }
+
+    public DTOEntity updateGroup(PersonnelDTO personnelDTO) {
+        Personnel personnel = personnelRepository.findById(personnelDTO.getId()).get();
+        personnel.setElectricalSafetyGroup(personnelDTO.getElectricalSafetyGroup());
+        return PersonnelDTO.convertToDto(personnel);
     }
 }
