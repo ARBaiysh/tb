@@ -31,7 +31,9 @@ public class Personnel{
     @Column(updatable = false)
     private LocalDateTime createdDate;
 
-    private String positionId;
+    @OneToOne() //one-to-one
+    @JoinColumn(name="position_id")
+    private Position position;
 
     @Enumerated(value = EnumType.STRING)
     private ESafetyGroup electricalSafetyGroup;

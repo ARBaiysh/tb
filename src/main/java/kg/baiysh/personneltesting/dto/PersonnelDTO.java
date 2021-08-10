@@ -2,6 +2,7 @@ package kg.baiysh.personneltesting.dto;
 
 
 import kg.baiysh.personneltesting.dto.utils.DTOEntity;
+import kg.baiysh.personneltesting.entity.Position;
 import kg.baiysh.personneltesting.entity.enums.ESafetyGroup;
 import lombok.Data;
 
@@ -14,6 +15,6 @@ public class PersonnelDTO implements DTOEntity {
     private String personnelName;
     private int personnelNumber;
     private LocalDateTime createdDate;          //auto crate
-    private String positionId;
+    private Position position;
     private ESafetyGroup electricalSafetyGroup; //default non
 }

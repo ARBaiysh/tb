@@ -19,8 +19,8 @@ import java.util.List;
 public class PositionService {
     private final PositionRepository positionRepository;
 
-    public DTOEntity createPosition(PositionDTO dtoPosition) {
-        Position position = positionRepository.save(new Position(dtoPosition.getName()));
+    public DTOEntity createPosition(PositionDTO positionDTO) {
+        Position position = positionRepository.save(new Position(positionDTO.getName()));
 
         return DtoUtils.convertToDto(position, new PositionDTO());
 

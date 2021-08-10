@@ -32,4 +32,5 @@ public class Position {
     protected void onCreate() {
         this.createdDate = LocalDateTime.now();
     }
+
 }
