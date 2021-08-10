@@ -1,8 +1,8 @@
 package kg.baiysh.personneltesting.controller;
 
-import kg.baiysh.personneltesting.dto.utils.DTOEntity;
-import kg.baiysh.personneltesting.dto.UserDTO;
-import kg.baiysh.personneltesting.dto.utils.DtoUtils;
+import kg.baiysh.personneltesting.payload.utils.DTOEntity;
+import kg.baiysh.personneltesting.payload.dto.UserDTO;
+import kg.baiysh.personneltesting.payload.utils.DtoUtils;
 import kg.baiysh.personneltesting.entity.User;
 import kg.baiysh.personneltesting.entity.enums.ERole;
 import kg.baiysh.personneltesting.services.UserService;
@@ -67,7 +67,7 @@ public class UserController {
         return new ResponseEntity<>(userUpdated, HttpStatus.OK);
     }
 
-    @PostMapping("/addRoleToUser/{userId}:{role}")
+    @PostMapping("/{userId}/addRoleToUser/{role}")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> addRoleToUser(@PathVariable String userId, @PathVariable String role) {
 

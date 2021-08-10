@@ -2,7 +2,6 @@ package kg.baiysh.personneltesting.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import kg.baiysh.personneltesting.dto.utils.DTOEntity;
 import kg.baiysh.personneltesting.entity.enums.ESafetyGroup;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +20,6 @@ public class Personnel{
     @Column(unique = true)
     private String id;
 
-
     private String personnelName;
 
     @Column(unique = true)
@@ -37,6 +35,10 @@ public class Personnel{
 
     @Enumerated(value = EnumType.STRING)
     private ESafetyGroup electricalSafetyGroup;
+
+    @OneToOne() //one-to-one
+    @JoinColumn(name="user_id")
+    private User user;
 
     @PrePersist
     protected void onCreate() {

@@ -1,10 +1,11 @@
 package kg.baiysh.personneltesting.services;
 
 
-import kg.baiysh.personneltesting.dto.PositionDTO;
-import kg.baiysh.personneltesting.dto.utils.DTOEntity;
-import kg.baiysh.personneltesting.dto.utils.DtoUtils;
+import kg.baiysh.personneltesting.payload.dto.PositionDTO;
+import kg.baiysh.personneltesting.payload.utils.DTOEntity;
+import kg.baiysh.personneltesting.payload.utils.DtoUtils;
 import kg.baiysh.personneltesting.entity.Position;
+import kg.baiysh.personneltesting.exceptions.ApiRequestException;
 import kg.baiysh.personneltesting.repository.PositionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,10 +21,11 @@ public class PositionService {
     private final PositionRepository positionRepository;
 
     public DTOEntity createPosition(PositionDTO positionDTO) {
+        if(positionRepository.existsByPositionName(positionDTO.getName())){
+            throw new ApiRequestException("The position " + positionDTO.getName() + " already exist. Please check the entered data");
+        }
         Position position = positionRepository.save(new Position(positionDTO.getName()));
-
         return DtoUtils.convertToDto(position, new PositionDTO());
-
     }
 
     public List<DTOEntity> getPositions() {

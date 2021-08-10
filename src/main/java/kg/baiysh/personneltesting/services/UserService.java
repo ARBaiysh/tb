@@ -1,6 +1,6 @@
 package kg.baiysh.personneltesting.services;
 
-import kg.baiysh.personneltesting.dto.UserDTO;
+import kg.baiysh.personneltesting.payload.dto.UserDTO;
 import kg.baiysh.personneltesting.entity.User;
 import kg.baiysh.personneltesting.entity.enums.ERole;
 import kg.baiysh.personneltesting.entity.enums.EStatus;

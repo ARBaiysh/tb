@@ -1,10 +1,8 @@
 package kg.baiysh.personneltesting.controller;
 
-import kg.baiysh.personneltesting.dto.PersonnelDTO;
-import kg.baiysh.personneltesting.dto.PositionDTO;
-import kg.baiysh.personneltesting.dto.utils.DTOEntity;
+import kg.baiysh.personneltesting.payload.dto.PersonnelDTO;
+import kg.baiysh.personneltesting.payload.utils.DTOEntity;
 import kg.baiysh.personneltesting.services.PersonnelService;
-import kg.baiysh.personneltesting.services.PositionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -35,8 +34,8 @@ public class PersonnelController {
 
     @PostMapping("/create")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<DTOEntity> createPosition(@RequestBody PersonnelDTO personnelDTO) {
-        DTOEntity dtoEntity = personnelService.createPersonnel(personnelDTO);
+    public ResponseEntity<DTOEntity> createPosition(@RequestBody PersonnelDTO personnelDTO, Principal principal) {
+        DTOEntity dtoEntity = personnelService.createPersonnel(personnelDTO, principal);
         return new ResponseEntity<>(dtoEntity, HttpStatus.OK);
     }
 }

@@ -18,14 +18,15 @@ public class Position {
     @Column(unique = true)
     private String id;
 
-    private String name;
+    @Column(unique = true)
+    private String positionName;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(updatable = false)
     private LocalDateTime createdDate;
 
-    public Position(String name) {
-        this.name = name;
+    public Position(String positionName) {
+        this.positionName = positionName;
     }
 
     @PrePersist

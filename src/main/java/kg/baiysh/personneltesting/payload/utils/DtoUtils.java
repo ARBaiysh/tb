@@ -1,4 +1,4 @@
-package kg.baiysh.personneltesting.dto.utils;
+package kg.baiysh.personneltesting.payload.utils;
 
 import org.modelmapper.ModelMapper;
 

@@ -1,6 +1,6 @@
-package kg.baiysh.personneltesting.dto;
+package kg.baiysh.personneltesting.payload.dto;
 
-import kg.baiysh.personneltesting.dto.utils.DTOEntity;
+import kg.baiysh.personneltesting.payload.utils.DTOEntity;
 import lombok.Data;
 
 @Data

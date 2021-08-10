@@ -1,7 +1,7 @@
 package kg.baiysh.personneltesting.controller;
 
-import kg.baiysh.personneltesting.dto.PositionDTO;
-import kg.baiysh.personneltesting.dto.utils.DTOEntity;
+import kg.baiysh.personneltesting.payload.dto.PositionDTO;
+import kg.baiysh.personneltesting.payload.utils.DTOEntity;
 import kg.baiysh.personneltesting.services.PositionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
